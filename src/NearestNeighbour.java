@@ -26,9 +26,9 @@ public class NearestNeighbour {
                 if (scan.hasNextDouble()) pW = scan.nextDouble();
                 if (scan.hasNext()) name1 = scan.next();
 
-                if (s.equals("iris-training.txt")) {
+                if (s.equals("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-training.txt")) {
                     flowerListTraining.add(new Flower(sL, sW, pL, pW, name1));
-                } else flowerListTest.add(new Flower(sL, sW, pL, pW, name1));
+                } else if(s.equals("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-test.txt"))flowerListTest.add(new Flower(sL, sW, pL, pW, name1));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,8 +102,8 @@ public class NearestNeighbour {
 
     public static void main(String[] arg) {
 
-        scanFiles("iris-training.txt");
-        scanFiles("iris-test.txt");
+        scanFiles("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-training.txt");
+        scanFiles("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-test.txt");
         kNearest(flowerListTraining, flowerListTest.get(0), 1);
 
     }
