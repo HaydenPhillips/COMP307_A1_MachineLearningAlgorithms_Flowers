@@ -1,3 +1,5 @@
+import com.sun.tools.javac.Main;
+
 import java.io.FileReader;
 import java.util.*;
 
@@ -23,10 +25,11 @@ public class NearestNeighbour {
                 if (scan.hasNextDouble()) pW = scan.nextDouble();
                 if (scan.hasNext()) name1 = scan.next();
 
-                if (s.equals("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-training.txt")) {
+                if (s.contains("iris-training.txt")) {
                     flowerListTraining.add(new Flower(sL, sW, pL, pW, name1));
-                } else if (s.equals("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-test.txt"))
+                } else if (s.contains("iris-test.txt")) {
                     flowerListTest.add(new Flower(sL, sW, pL, pW, name1));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
