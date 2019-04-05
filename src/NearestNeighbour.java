@@ -43,7 +43,6 @@ public class NearestNeighbour {
         }
         ArrayList<Double> disList = new ArrayList<>(distances.keySet());
         Collections.sort(disList);
-//        System.out.println(disList);
 
         FlowerTypeCount iVe = new FlowerTypeCount(0, "Iris-versicolor");
         FlowerTypeCount iVi = new FlowerTypeCount(0, "Iris-virginica");
@@ -59,9 +58,6 @@ public class NearestNeighbour {
                 iSe.addCount();
             }
         }
-        System.out.println("iSe: "+iSe.getCount());
-        System.out.println("iVe: "+iVe.getCount());
-        System.out.println("ivi: "+iVi.getCount());
 
         if (iVe.getCount() > iVi.getCount() && iVe.getCount() > iSe.getCount()) return iVe.getName();
         if (iVi.getCount() > iVe.getCount() && iVi.getCount() > iSe.getCount()) return iVi.getName();
@@ -70,21 +66,22 @@ public class NearestNeighbour {
         return null;
     }
 
-
-    public static int getAccuracy() {
+    public static int getAccuracy(int k) {
         int correct = 0;
         int count = 0;
         for (int i = 0; i < flowerListTest.size(); i++) {
             count++;
             Flower testFlower = flowerListTest.get(i);
-            String tempPredict = kNearest(flowerListTraining, testFlower, 11);
+            String tempPredict = kNearest(flowerListTraining, testFlower, k);
 
             if (testFlower.getName().equals(tempPredict)) {
                 correct++;
             }
         }
-        System.out.println(correct);
-        System.out.println(count);
+        double percent = (((double) correct) / ((double) count)) * 100;
+        System.out.println("Correct: "+correct);
+        System.out.println("Total: "+count);
+        System.out.println("When K = "+k+ ", percent = "+percent+"%");
         return correct;
     }
 
@@ -136,10 +133,10 @@ public class NearestNeighbour {
 
     public static void main(String[] arg) {
 
-        scanFiles("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-training.txt");
-        scanFiles("C:\\Users\\ASUS\\Documents\\Uni Work\\COMP307\\A1\\src\\iris-test.txt");
-
-        getAccuracy();
+        scanFiles(arg[0]);
+        scanFiles(arg[1]);
+        getAccuracy(1);
+        getAccuracy(3);
     }
 
 }
