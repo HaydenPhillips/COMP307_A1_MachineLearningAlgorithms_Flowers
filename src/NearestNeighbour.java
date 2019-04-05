@@ -75,8 +75,9 @@ public class NearestNeighbour {
             String tempPredict = kNearest(flowerListTraining, testFlower, k);
 
             if (testFlower.getName().equals(tempPredict)) {
+                System.out.println("Correct: "+testFlower.getName());
                 correct++;
-            }
+            } else System.out.println("Incorrect:   "+testFlower.getName());
         }
         double percent = (((double) correct) / ((double) count)) * 100;
         System.out.println("Correct: "+correct);
@@ -102,7 +103,6 @@ public class NearestNeighbour {
     }
 
     public static double range(ArrayList<Flower> flowerList, String measurement) {
-
         double min = 100;
         double max = 0;
 
